@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+metadata:
+  name: {{ template "wikimedia.fullname" . }}-web
+  namespace: {{ .Release.namespace }}
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: {{ template "wikimedia.fullname" . }}-web
+          servicePort: 80
